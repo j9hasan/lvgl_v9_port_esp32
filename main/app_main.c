@@ -51,6 +51,7 @@ void app_main()
 }
 
 uint16_t buf[LV_HOR_RES_MAX * 40];
+uint16_t buf2[LV_HOR_RES_MAX * 40];
 
 static void ui_task(void *pvParameter)
 {
@@ -65,7 +66,7 @@ static void ui_task(void *pvParameter)
 
   lv_display_t *display = lv_display_create(LV_HOR_RES_MAX, LV_VER_RES_MAX);
 
-  lv_display_set_buffers(display, buf, NULL, sizeof(buf), LV_DISPLAY_RENDER_MODE_PARTIAL);
+  lv_display_set_buffers(display, buf, buf2, sizeof(buf), LV_DISPLAY_RENDER_MODE_PARTIAL);
 
   lv_display_set_flush_cb(display, disp_driver_flush);
   lv_display_set_color_format(display, LV_COLOR_FORMAT_NATIVE);

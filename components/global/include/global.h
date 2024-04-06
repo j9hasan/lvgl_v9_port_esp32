@@ -5,5 +5,6 @@
 #include <stdint.h>
 // #include "lvgl_helpers.h"
 extern uint16_t buf[];
+extern uint16_t buf2[];
 
 #endif

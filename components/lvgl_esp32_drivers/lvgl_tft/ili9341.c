@@ -127,6 +127,7 @@ void ili9341_flush(lv_disp_t *drv, const lv_area_t *area, lv_color_t *color_map)
 #ifdef LV_COLOR_16_SWAP_
 
 	lv_draw_sw_rgb565_swap(buf, LV_HOR_RES * 40);
+	lv_draw_sw_rgb565_swap(buf2, LV_HOR_RES * 40);
 
 #endif
 
