@@ -23,7 +23,7 @@
 #define LV_TICK_PERIOD_MS 10
 #define MONITOR_HEAP 1
 #define GUI_TASK_STACK_SIZE 8 * 1024
-#define GUI_TASK_PRIORITY 3
+#define GUI_TASK_PRIORITY 10
 #define GUI_TASK_CORE 1
 
 // global vars
@@ -72,34 +72,9 @@ static void ui_task(void *pvParameter)
   lv_display_set_color_format(display, LV_COLOR_FORMAT_NATIVE);
 
   lv_indev_t *indev = lv_indev_create();
-  lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER); /*See below.*/
+  lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER); 
 
-  lv_indev_set_read_cb(indev, touch_driver_read); /*See below.*/
-
-  // Initialize the working display buffers.
-  // static lv_color_t buf1[DISP_BUF_SIZE];
-  // static lv_color_t buf2[DISP_BUF_SIZE];
-
-  // // register diaplay driver
-  // static lv_disp_draw_buf_t disp_buf;
-  // uint32_t size_in_px = DISP_BUF_SIZE;
-
-  // lv_disp_draw_buf_init(&disp_buf, buf1, buf2, size_in_px);
-  // static lv_disp_t disp_drv;
-  // lv_disp_drv_init(&disp_drv);
-  // disp_drv.draw_buf = &disp_buf;
-  // disp_drv.flush_cb = disp_driver_flush;
-  // disp_drv.hor_res = LV_HOR_RES_MAX;
-  // disp_drv.ver_res = LV_VER_RES_MAX;
-  // // disp_drv.rotated = 1;
-  // lv_disp_drv_register(&disp_drv);
-
-  // register touch driver
-  // lv_indev_t indev_drv;
-  // lv_indev_drv_init(&indev_drv);
-  // indev_drv.read_cb = touch_driver_read;
-  // indev_drv.type = LV_INDEV_TYPE_POINTER;
-  // lv_indev_drv_register(&indev_drv);
+  lv_indev_set_read_cb(indev, touch_driver_read);
 
   // Create and start a periodic timer interrupt to call lv_tick_inc
   const esp_timer_create_args_t periodic_timer_args = {
